@@ -14,4 +14,14 @@ operativo que encontrarás en
 Para Linux, básicamente es descomprimir el fichero *zip* descargado y ejecutar
 el script `android-studio/bin/studio.sh`.
 
+Una vez instalado, hay que instalar ciertos paquetes pertenecientes al SDK.
+Estos paquetes permiten desarrollar para varias versiones de Android, distintas
+herramientas de simulación, etc.
+
+CONTINUAR DESCRIBIENDO LA INSTALACIÓN DESDE AQUÍ
+Siguiendo instruciones sobre cómo
+[instlar paquetes del SDK](https://developer.android.com/sdk/installing/adding-packages.html)
+
+
+
 
