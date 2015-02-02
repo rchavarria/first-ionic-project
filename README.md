@@ -16,11 +16,17 @@ el script `android-studio/bin/studio.sh`.
 
 Una vez instalado, hay que instalar ciertos paquetes pertenecientes al SDK.
 Estos paquetes permiten desarrollar para varias versiones de Android, distintas
-herramientas de simulación, etc.
+herramientas de simulación, etc. Para ello, se pueden seguir las instrucciones en
+[instalar paquetes del SDK](https://developer.android.com/sdk/installing/adding-packages.html).
 
-CONTINUAR DESCRIBIENDO LA INSTALACIÓN DESDE AQUÍ
-Siguiendo instruciones sobre cómo
-[instlar paquetes del SDK](https://developer.android.com/sdk/installing/adding-packages.html)
+Como el objetivo es desarrollar aplicaciones android con [Cordova](http://cordova.apache.org)
+e [ionic](http://ionicframework.com/) debemos tener en cuenta qué versiones de Android
+soportan. Cordova parece que soporta versiones 2.3.x y, más interesantes, 4.x
+([versiones soportadas por Cordova](http://cordova.apache.org/docs/en/4.0.0//guide_platforms_android_index.md.html#Android%20Platform%20Guide)),
+por lo que instalaremos paquetes de esta versión de Android. También, por ser la más
+actual en este momento, instalaremos la versión 5.0.1 de Android.
+
+
 
 
 
