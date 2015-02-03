@@ -50,4 +50,46 @@ Y para comprobar que se ha instalado correctamente, se puede comprobar con
 
 Así de simple. Si todo ha ido bien, veremos la ayuda por consola.
 
+## Aplicación de ejemplo en Cordova
+
+Antes de proseguir, vamos a crear una aplicación de ejemplo de Cordova, para
+comprobar que todo está correctamente (Cordova + Android Studio).
+
+    $ cordova create hello com.example.hello HelloWorld
+    $ cd hello
+    $ cordova platform add android
+    $ cordova build
+    $ cordova emulate android
+
+En todo este proceso me he encontrado los siguientes errores:
+
+- Debo tener configuradas ciertas variables de entorno:
+
+    export ANDROID_HOME=/home/txingo/Android/Sdk
+    export PATH="$ANDROID_HOME/tools:$ANDROID_HOME/platforms:$PATH"
+
+- Debo tener instalado la herramienta `ant`:
+
+    sudo apt-get install ant
+
+- Aún así, tengo un error cuando intento `cordova build`. El error parece que
+tiene que ver con intentar compilar el proyecto en un Linux de 64bits.
+
+    ...build-tools/21.1.2/aapt: error while loading shared libraries: libstdc++.so.6...
+
+- Y parece que se soluciona con:
+
+    $ sudo apt-get install lib32z1
+
+- Bueno, pues eso no lo soluciona a día de hoy. Pero lo he conseguido con
+
+    $ sudo apt-get install libstdc++6:i386
+
+## Instalar Ionic
+
+
+
+
+
+
 
