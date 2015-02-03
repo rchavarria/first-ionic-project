@@ -26,8 +26,28 @@ soportan. Cordova parece que soporta versiones 2.3.x y, más interesantes, 4.x
 por lo que instalaremos paquetes de esta versión de Android. También, por ser la más
 actual en este momento, instalaremos la versión 5.0.1 de Android.
 
+## Instalando Cordova
 
+Después de tener instalado y funcionando Android Studio, vamos a instalar
+[Apache Cordova](http://cordova.apache.org).
 
+Existen dos formas de hacerlo, [descargándolo](http://cordova.apache.org/index.html#download)
+o instalando la herramienta por
+[línea de comandos](http://cordova.apache.org/docs/en/4.0.0//guide_cli_index.md.html#The%20Command-Line%20Interface).
+Este último es el recomendado, así que a por él que vamos.
 
+Como prerequisitos, Cordova pide tener instalado [NodeJS](http://nodejs.org) y un
+cliente de [Git](http://git-scm.com) (parece que Cordova utiliza git para instalar
+distintas dependencias).
+
+Instalamos Cordova con el siguiente comando
+
+    $ npm install -g cordova
+
+Y para comprobar que se ha instalado correctamente, se puede comprobar con
+
+    $ cordova
+
+Así de simple. Si todo ha ido bien, veremos la ayuda por consola.
 
 
