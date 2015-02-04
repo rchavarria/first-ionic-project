@@ -115,6 +115,20 @@ y ejecutamos el comando `emulate` para ver nuestra aplicación.
 Ahora tenemos que avanzar en nuestro conocimiento a través de la
 [documentación de Ionic](http://ionicframework.com/docs).
 
+## Ionic : componentes CSS
+
+Uno de los pilares de Ionic es su CSS (también se puede personalizar sus
+ficheros Sass).
+
+Ionic incluye unos cuantos [componentes CSS](http://ionicframework.com/docs/components)
+listos para usar en tus proyectos.
+
+No voy a incluir todos los componentes aquí, pero sí he de decir que
+hay muchísimos, y muy variados. Seguro que encuentras todos los que 
+necesitas para tus primeras aplicaciones.
+
+## Ionic : JavaScript API
+
 
 
 
