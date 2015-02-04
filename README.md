@@ -85,9 +85,35 @@ tiene que ver con intentar compilar el proyecto en un Linux de 64bits.
 
     $ sudo apt-get install libstdc++6:i386
 
-## Instalar Ionic
+## Instalando Ionic
 
+En esta ocasión vamos a seguir la guía sobre
+[cómo comenzar con Ionic](http://ionicframework.com/getting-started).
 
+Ionic, al igual que Cordova, necesita de NodeJS para poder instalarse. Como
+ya lo instalamos con Cordova, parece que tenemos todos los requisitos para
+instalar Ionic.
+
+    $ npm install -g ionic
+
+Más sencillo, imposible. Con cualquiera de los siguientes comandos crearemos
+una aplicación lista para ser ejecutada. ¡Increíble!
+
+    $ ionic start myApp blank
+    $ ionic start myApp tabs
+    $ ionic start myApp sidemenu
+
+Entramos en el directorio de la aplicación, añadimos la plataforma android
+y ejecutamos el comando `emulate` para ver nuestra aplicación.
+
+    $ cd myApp
+    $ ionic platform add android
+    $ ionic emulate android
+
+¿Ha sido fácil eh? ¿Y ahora qué?
+
+Ahora tenemos que avanzar en nuestro conocimiento a través de la
+[documentación de Ionic](http://ionicframework.com/docs).
 
 
 
