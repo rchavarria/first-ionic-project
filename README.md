@@ -129,6 +129,15 @@ necesitas para tus primeras aplicaciones.
 
 ## Ionic : JavaScript API
 
+El siguiente gran pilar de Ionic son sus componentes JavaScript. Éstos están
+implementados como servicios/factorías de AngularJS, lo que los hace muy fácil
+de usar en una aplicación web (basada en AngularJS, por supuesto).
+
+Entre ellos podemos encontrar la directiva `ion-content`, que permite tener
+una vista Ionic con scroll; eventos como `on-hold`, `on-tap` `on-touch` o 
+`on-swipe`; cabeceras; listas; diálogos modales; animaciones de carga;
+popups; scrolls; vistas laterales;...
+
 
 
 
