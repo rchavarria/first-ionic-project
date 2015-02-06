@@ -138,6 +138,16 @@ una vista Ionic con scroll; eventos como `on-hold`, `on-tap` `on-touch` o
 `on-swipe`; cabeceras; listas; diálogos modales; animaciones de carga;
 popups; scrolls; vistas laterales;...
 
+## Ionic : construyendo una aplicación de ejemplo
+
+Comencemos una nueva aplicación, con el tema más simple
+
+    $ ionic start todo blank
+
+Este comando creará una nueva aplicación Ionic en el directorio `todo`. Dentro
+de este directorio podremos encontrar multitud de ficheros de configuración:
+Ionic, Cordova, Gulp, Bower,...
+
 
 
 
