@@ -148,6 +148,101 @@ Este comando creará una nueva aplicación Ionic en el directorio `todo`. Dentro
 de este directorio podremos encontrar multitud de ficheros de configuración:
 Ionic, Cordova, Gulp, Bower,...
 
+Entremos en el directorio `todo` y añadamos la plataforma Android:
+
+    $ cd todo
+    $ ionic platform add android
+
+### Creando las primeras pantallas
+
+La aplicación va a ser una aplicación de tareas por hacer (en inglés: todos).
+
+Una aplicación Ionic/Cordova es básicamente una aplicación web, y la 
+*pantalla de inicio* se encuentra en el fichero `www/index.html`. Aunque hayamos
+creado una aplicación en blanco, Ionic ya ha creado cierto contenido básico
+en dicho fichero.
+
+``` html
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- ionic css files -->
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <!-- your own css files -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+  </head>
+  <body>
+  </body>
+</html>
+```
+
+Nuestra aplicación será una aplicación muy sencilla, donde podremos ver un menú
+desplazando la pantalla. Es lo que se conoce como *side menus*. Por lo que dentro
+del cuerpo de nuestro HTML añadiremos:
+
+``` html
+<body>
+    <ion-side-menus>
+        <ion-side-menu-content>
+        </ion-side-menu-content>
+        <ion-side-menu side="left">
+        </ion-side-menu>
+    </ion-side-menus>
+</body>
+```
+
+`ion-side-menu-content` define el contenido principal, mientras que `ion-side-menu`
+nos permite definir lo que irá dentro del menú desplegable a la izquierda.
+
+### Inicializando la aplicación
+
+En el fichero `www/js/app.js` definiremos nuestra aplicación AngularJS, llamada `todo`:
+
+``` javascript
+angular.module('todo', ['ionic'])
+//...
+```
+
+En `www/index.html` debemos incluir el anterior fichero JavaScript, justo antes de
+cuando incluimos `cordova.js`. 
+
+Y por último, inicializamos la aplicación AngularJS como cualquier otra de este
+framework:
+
+``` html
+<body ng-app="todo">
+```
+
+Para poder comenzar a ver algún contenido en nuestra aplicación, comenzaremos por
+mostrar unas cabeceras tanto en el panel principal como en el menú deslizable:
+
+``` html
+<ion-side-menu-content>
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Todo</h1>
+    </ion-header-bar>
+    <ion-content>
+    </ion-content>
+</ion-side-menu-content>
+
+<ion-side-menu side="left">
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Projects</h1>
+    </ion-header-bar>
+</ion-side-menu>
+```
+
+
+
+
+
+
 
 
 
