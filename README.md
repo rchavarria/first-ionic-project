@@ -238,6 +238,42 @@ mostrar unas cabeceras tanto en el panel principal como en el menú deslizable:
 </ion-side-menu>
 ```
 
+### Creando una lista de tareas por hacer
+
+Conjugando elementos de Ionic como `ion-list` y `ion-item` con la directiva
+de AngularJS `ng-repeat` podremos crear listas increíbles en nuestras aplicaciones.
+Para la nuestra será muy simple, pero por algo hay que empezar:
+
+``` html
+<ion-list>
+    <ion-item ng-repeat="task in tasks">
+        {{task.title}}
+    </ion-item>
+</ion-list>
+```
+
+Pero para poder hacer uso de AngularJS, debemos añadir un controlador (lo haremos
+a nivel de `body`) y crear un array de datos en `$scope` para poder utilizar esos
+datos en la directiva `ng-repeat`.
+
+``` html
+<body ng-app="todo" ng-controller="TodoCtrl">
+```
+
+``` javascript
+angular.module('todo', ['ionic'])
+
+.controller('TodoCtrl', function($scope) {
+  $scope.tasks = [
+    { title: 'Collect coins' },
+    { title: 'Eat mushrooms' },
+    { title: 'Get high enough to grab the flag' },
+    { title: 'Find the Princess' }
+  ];
+});
+```
+
+
 
 
 
