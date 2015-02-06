@@ -365,10 +365,170 @@ que así:
 });
 ```
 
+### Añadiendo projectos
 
+Ahora vamos a hacer lo mismo pero con *proyectos*, de forma que cada proyecto
+tendrá sus tareas asociadas.
 
+En la cabecera mostraremos el nombre del proyecto seleccionado
 
+``` html
+<h1 class="title">{{activeProject.title}}</h1>
+```
 
+Y las tareas a mostrar pertenecen al proyecto activo
 
+``` html
+<ion-item ng-repeat="task in activeProject.tasks">
+    {{task.title}}
+</ion-item>
+```
 
+El menú lateral quedaría:
+
+``` html
+<ion-side-menu side="left">
+    <ion-header-bar class="bar-dark">
+        <h1 class="title">Projects</h1>
+        <button class="button button-icon ion-plus" ng-click="newProject()">
+        </button>
+    </ion-header-bar>
+    <ion-content scroll="false">
+        <ion-list>
+            <ion-item ng-repeat="project in projects" ng-click="selectProject(project, $index)" ng-class="{active: activeProject == project}">
+                {{project.title}}
+            </ion-item>
+        </ion-list>
+    </ion-content>
+</ion-side-menu>
+```
+
+Donde tendremos un nuevo botón para añadir proyectos, una lista de proyectos
+(exactamente igual que la lista de tareas) y la posibilidad de seleccionar
+un proyecto.
+
+En la parte de JavaScript, tendremos un nuevo servicio, `Projects` que
+gestionará los proyectos. Los cargará y almacenará en *localStorage*, un
+servicio proporcionado por los navegadores para almacenar datos de forma
+sencilla.
+
+``` javascript
+.factory('Projects', function() {
+    return {
+        all: function() {
+            var projectString = window.localStorage['projects'];
+            if(projectString) {
+                return angular.fromJson(projectString);
+            }
+            return [];
+        },
+        save: function(projects) {
+            window.localStorage['projects'] = angular.toJson(projects);
+        },
+        newProject: function(projectTitle) {
+            // Add a new project
+            return {
+                title: projectTitle,
+                tasks: []
+            };
+        },
+        getLastActiveIndex: function() {
+            return parseInt(window.localStorage['lastActiveProject']) || 0;
+        },
+        setLastActiveIndex: function(index) {
+            window.localStorage['lastActiveProject'] = index;
+        }
+    }
+})
+```
+
+También debemos modificar nuestro controlador. Se proporciona el código completo,
+pero solo se han añadido nuevos métodos para gestionar los proyectos y cambiado
+algunas propiedades de `$scope` para adaptarse a que las tareas pertenecen
+ahora a proyectos.
+
+``` javascript
+.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
+
+    // A utility function for creating a new project
+    // with the given projectTitle
+    var createProject = function(projectTitle) {
+        var newProject = Projects.newProject(projectTitle);
+        $scope.projects.push(newProject);
+        Projects.save($scope.projects);
+        $scope.selectProject(newProject, $scope.projects.length-1);
+    }
+
+    // Load or initialize projects
+    $scope.projects = Projects.all();
+
+    // Grab the last active, or the first project
+    $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
+
+    // Called to create a new project
+    $scope.newProject = function() {
+        var projectTitle = prompt('Project name');
+        if(projectTitle) {
+            createProject(projectTitle);
+        }
+    };
+
+    // Called to select the given project
+    $scope.selectProject = function(project, index) {
+        $scope.activeProject = project;
+        Projects.setLastActiveIndex(index);
+        $ionicSideMenuDelegate.toggleLeft(false);
+    };
+
+    // Create our modal
+    $ionicModal.fromTemplateUrl('new-task.html', function(modal) {
+        $scope.taskModal = modal;
+    }, {
+        scope: $scope
+    });
+
+    $scope.createTask = function(task) {
+        if(!$scope.activeProject || !task) {
+            return;
+        }
+        $scope.activeProject.tasks.push({
+            title: task.title
+        });
+        $scope.taskModal.hide();
+
+        // Inefficient, but save all the projects
+        Projects.save($scope.projects);
+
+        task.title = "";
+    };
+
+    $scope.newTask = function() {
+        $scope.taskModal.show();
+    };
+
+    $scope.closeNewTask = function() {
+        $scope.taskModal.hide();
+    }
+
+    $scope.toggleProjects = function() {
+        $ionicSideMenuDelegate.toggleLeft();
+    };
+
+    // Try to create the first project, make sure to defer
+    // this by using $timeout so everything is initialized
+    // properly
+    $timeout(function() {
+        if($scope.projects.length == 0) {
+            while(true) {
+                var projectTitle = prompt('Your first project title:');
+                if(projectTitle) {
+                    createProject(projectTitle);
+                    break;
+                }
+            }
+        }
+    });
+
+});
+```
 
