@@ -140,7 +140,8 @@ popups; scrolls; vistas laterales;...
 
 ## Ionic : construyendo una aplicación de ejemplo
 
-Comencemos una nueva aplicación, con el tema más simple
+Siguiendo el tutorial [Ionic book](http://ionicframework.com/docs/guide),
+comencemos una nueva aplicación, con el tema más simple
 
     $ ionic start todo blank
 
@@ -247,7 +248,7 @@ Para la nuestra será muy simple, pero por algo hay que empezar:
 ``` html
 <ion-list>
     <ion-item ng-repeat="task in tasks">
-        {{task.title}}
+        {% raw %}{{task.title}}{% endraw %}
     </ion-item>
 </ion-list>
 ```
@@ -273,8 +274,65 @@ angular.module('todo', ['ionic'])
 });
 ```
 
+### Creando tareas
 
+Una aplicación no sería tal si no permitiera cierta interacción con el usuario.
+Nosotros le vamos a permitir crear tareas (por ahora). El usuario podrá crear
+tareas introduciendo datos en un formulario que será mostrado en un diálogo 
+modal.
 
+El HTML del diálogo lo definiremos en una plantilla de AngularJS, que es una
+forma muy extendida de reutilizar código en dicho framework. Básicamente,
+tendremos un botón en una cabecera para cerrar el diálogo, y un formulario
+con una etiqueta, una caja de texto y un botón para aceptar los datos del
+formulario.
+
+El siguiente código la añadiremos a `www/index.html`, justo después del
+cierre de la etiqueta `ion-side-menu`.
+
+``` html
+<script id="new-task.html" type="text/ng-template">
+    <div class="modal">
+
+        <!-- Modal header bar -->
+        <ion-header-bar class="bar-secondary">
+            <h1 class="title">New Task</h1>
+            <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+        </ion-header-bar>
+
+        <!-- Modal content area -->
+        <ion-content>
+
+        <form ng-submit="createTask(task)">
+            <div class="list">
+                <label class="item item-input">
+                    <input type="text" placeholder="What do you need to do?" ng-model="task.title">
+                </label>
+            </div>
+            <div class="padding">
+                <button type="submit" class="button button-block button-positive">Create Task</button>
+            </div>
+        </form>
+
+        </ion-content>
+    </div>
+</script>
+```
+
+Este diálogo modal lo podremos abrir a partir de un botón en la cabecera del
+contenido principal (de la lista de tareas).
+
+``` html
+<button class="button button-icon" ng-click="newTask()">
+    <i class="icon ion-compose"></i>
+</button>
+```
+
+Y para dar funcionalidad a todo esto, nuestro código AngularJS quedaría tal
+que así:
+
+``` javascript
+```
 
 
 
