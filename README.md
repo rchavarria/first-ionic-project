@@ -532,3 +532,16 @@ ahora a proyectos.
 });
 ```
 
+## Paso final
+
+Ya tenemos la aplicación desarrollada, ahora solo hace falta ejecutarla para
+verla en acción. Para ello hay multitud de opciones:
+
+1. Verla en un navegador en nuestro escritorio: `ionic serve`
+2. Ejecutarla en un emulador: `ionic build android && ionic emulate android`
+3. Probarla en un dispositivo real conectado: `ionic run android`
+4. Ejecutarla en un navegador en un dispositivo: `ionic serve` y visitar desde
+el dispositivo la dirección que indica Ionic. El dispositivo debe estar en
+la misma red local.
+5. [Publicar la aplicación](http://ionicframework.com/docs/guide/publishing.html)
+
