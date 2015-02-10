@@ -16,7 +16,7 @@
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
     <!-- ngCordova -->
-    <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/ngCordova/dist/ng-cordova.min.js"></script>
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -31,8 +31,7 @@
         <h1 class="title">Play a sound</h1>
       </ion-header-bar>
       <ion-content ng-controller="ExampleController">
-        <button>Play</button>
-        <button class="button" ng-click="play('http://www.stephaniequinn.com/Music/Commercial%20DEMO%20-%2013.mp3')">Play from internet</button>
+        <button class="button" ng-click="play('/android_asset/www/audio/some-demo.mp3')">Play from internet</button>
       </ion-content>
     </ion-pane>
   </body>

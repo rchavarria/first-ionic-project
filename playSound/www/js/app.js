@@ -16,8 +16,9 @@ angular.module('playSound', ['ionic', 'ngCordova'])
 .controller('ExampleController', function($scope, $cordovaMedia, $ionicLoading) {
 
     $scope.play = function (src) {
-        var media = new Media(src, null, null, mediaStatusCallback);
-        $cordovaMedia.play(media);
+        var media = $cordovaMedia.newMedia(src);
+
+        media.play();
     };
  
     var mediaStatusCallback = function(status) {
