@@ -13,19 +13,26 @@ angular.module('playSound', ['ionic', 'ngCordova'])
   });
 })
 
-.controller('ExampleController', function($scope, $cordovaMedia, $ionicLoading) {
+.controller('ExampleController', function($scope, $cordovaMedia) {
+
+    var media;
 
     $scope.play = function (src) {
-        var media = $cordovaMedia.newMedia(src);
+        if (media) {
+            $scope.stop();
+        }
 
+        media = $cordovaMedia.newMedia(src);
         media.play();
     };
- 
-    var mediaStatusCallback = function(status) {
-        if(status == 1) {
-            $ionicLoading.show({template: 'Loading...'});
-        } else {
-            $ionicLoading.hide();
+
+    $scope.stop = function () {
+        if (!media) {
+            return;
         }
+
+        media.stop();
+        media.release();
     };
+ 
 });
