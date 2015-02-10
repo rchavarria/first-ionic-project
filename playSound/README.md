@@ -4,6 +4,9 @@
 
 - [ngCordova](http://ngcordova.com)
 - [Plugin Cordova Media](http://cordova.apache.org/docs/en/3.1.0/cordova_media_media.md.html)
+- Versión de Cordova: 4.2.0
+- Versión de Ionic: 1.3.8
+- Versión de ngCordova: 0.1.12-alpha
 
 ## How to
 
