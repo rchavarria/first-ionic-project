@@ -30,13 +30,13 @@
       <div class="list card" ng-controller="ExampleController">
 
           <div class="item item-avatar">
-              <img src="img/small-dog.jpg" />
+              <img ng-src="{{word.thumbnail}}" />
               <h2>{{word.thumbnailTitle}}</h2>
               <p>{{word.thumbnailDescription}}</p>
           </div>
 
           <div class="item item-body">
-              <img class="full-image" src="img/dog.jpg" />
+              <img class="full-image" ng-src="{{word.image}}" />
               <p>{{word.imageDescription}}</p>
           </div>
 
