@@ -13,18 +13,11 @@ angular.module('playSound', ['ionic', 'ngCordova'])
   });
 })
 
-.controller('ExampleController', function($scope, $cordovaMedia) {
+.controller('ExampleController', function($scope, $cordovaMedia, Vocabulary) {
 
     var media;
 
-    $scope.word = {
-        thumbnail: 'img/small-dog.jpg',
-        thumbnailTitle: 'Dog',
-        thumbnailDescription: 'Wouf! Wouf!',
-        image: 'img/dog.jpg',
-        imageDescription: 'Help your kid to say that in English',
-        audio: '/android_asset/www/audio/some-demo.mp3'
-    };
+    $scope.word = Vocabulary.next();
 
     $scope.play = function (src) {
         if (media) {
@@ -43,5 +36,47 @@ angular.module('playSound', ['ionic', 'ngCordova'])
         media.stop();
         media.release();
     };
+
+    $scope.next = function () {
+        $scope.word = Vocabulary.next();
+    };
  
+})
+
+.factory('Vocabulary', function() {
+    var current = 0,
+        words = [];
+
+    words.push({
+        thumbnail: 'img/small-dog.jpg',
+        thumbnailTitle: 'Dog#1',
+        thumbnailDescription: 'Wouf! Wouf!',
+        image: 'img/dog.jpg',
+        imageDescription: 'Help your kid to say that in English',
+        audio: '/android_asset/www/audio/some-demo.mp3'
+    });
+    words.push({
+        thumbnail: 'img/small-dog.jpg',
+        thumbnailTitle: 'Dog#2',
+        thumbnailDescription: 'Wouf! Wouf!',
+        image: 'img/dog.jpg',
+        imageDescription: 'Help your kid to say that in English',
+        audio: '/android_asset/www/audio/some-demo.mp3'
+    });
+    words.push({
+        thumbnail: 'img/small-dog.jpg',
+        thumbnailTitle: 'Dog#3',
+        thumbnailDescription: 'Wouf! Wouf!',
+        image: 'img/dog.jpg',
+        imageDescription: 'Help your kid to say that in English',
+        audio: '/android_asset/www/audio/some-demo.mp3'
+    });
+
+    return {
+        next: function () {
+            var word = words[current];
+            current = (current + 1) % words.length;
+            return word;
+        }
+    };
 });
