@@ -17,6 +17,15 @@ angular.module('playSound', ['ionic', 'ngCordova'])
 
     var media;
 
+    $scope.word = {
+        thumbnail: 'img/small-dog.jpg',
+        thumbnailTitle: 'Dog',
+        thumbnailDescription: 'Wouf! Wouf!',
+        image: 'img/dog.jpg',
+        imageDescription: 'Help your kid to say that in English',
+        audio: '/android_asset/www/audio/some-demo.mp3'
+    };
+
     $scope.play = function (src) {
         if (media) {
             $scope.stop();

@@ -27,33 +27,33 @@
 
   <body ng-app="playSound">
 
-    <div class="list card">
+      <div class="list card" ng-controller="ExampleController">
 
-        <div class="item item-avatar">
-            <img src="img/small-dog.jpg" />
-            <h2>Dog!</h2>
-            <p>Wouf! wouf!</p>
-        </div>
+          <div class="item item-avatar">
+              <img src="img/small-dog.jpg" />
+              <h2>{{word.thumbnailTitle}}</h2>
+              <p>{{word.thumbnailDescription}}</p>
+          </div>
 
-        <div class="item item-body">
-            <img class="full-image" src="img/dog.jpg" />
-            <p>Help your kid to say that in English</p>
-        </div>
+          <div class="item item-body">
+              <img class="full-image" src="img/dog.jpg" />
+              <p>{{word.imageDescription}}</p>
+          </div>
 
-        <div class="item tabs tabs-secondary tabs-icon-left">
-            <a class="tab-item" href="#" ng-click="play('/android_asset/www/audio/some-demo.mp3')">
-                <i class="icon ion-play"></i>
-                Play
-            </a>
-            <a class="tab-item" href="#" ng-click="stop()">
-                <i class="icon ion-stop"></i>
-                Stop
-            </a>
-            <a class="tab-item" href="#">
-                <i class="icon ion-help-circled"></i>
-                Help
-            </a>
-        </div>
+          <div class="item tabs tabs-secondary tabs-icon-left">
+              <a class="tab-item" href="#" ng-click="play(word.audio)">
+                  <i class="icon ion-play"></i>
+                  Play
+              </a>
+              <a class="tab-item" href="#" ng-click="stop()">
+                  <i class="icon ion-stop"></i>
+                  Stop
+              </a>
+              <a class="tab-item" href="#">
+                  <i class="icon ion-help-circled"></i>
+                  Help
+              </a>
+          </div>
 
     </div>
 
